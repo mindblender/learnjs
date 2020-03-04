@@ -13,13 +13,44 @@
       body { margin-top: 30px; }
     </style>
   </head>
+  <!--
+    Environments:
+    test - http://learnjs-test.mindblender.com.s3-website-us-east-1.amazonaws.com
+    prod - http://learnjs.mindblender.com.s3-website-us-east-1.amazonaws.com
+   -->
   <body>
-    <div class='container'>
-      <h1>It works!</h1>
-      <div>
-        <span>You're ready to start!</span>
-        <span>Skeleton 2, jQuery 2, and AWS Libraries are included.</span>
+    <div class="markup">
+      <div class="view-container container">
+        <div class="landing-view">
+          <div class="row">
+            <div class="one-half column">
+              <h3>Learn JavaScript, one puzzle at a time.</h3>
+              <a href="#problem-1" class="button button-primary">Start Now!</a>
+            </div>
+            <div class="one-half column">
+              <img src="images/HeroImage.jpg" alt="Hero Image">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <script type="text/javascript">
+      $(window).ready(learnjs.appOnReady);
+    </script>
   </body>
 </html>
+
+<!--
+<body>
+<div class='markup'>
+  <div class='view-container container'> <div class='row'>
+    <div class='one-half column'>
+      <h3>Learn JavaScript, one puzzle at a time.</h3>
+      <a href='' class='button button-primary'>Start Now!</a>
+    </div>
+    <div class='one-half column'>
+      <img src='/images/HeroImage.jpg'/> </div>
+  </div>
+  </div>
+</div>
+</body>-->
