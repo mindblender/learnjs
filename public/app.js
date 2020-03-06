@@ -26,6 +26,10 @@ learnjs.applyObject = function (obj, elem) {
     }
 };
 
+learnjs.landingView = function () {
+    return learnjs.template('landing-view');
+};
+
 learnjs.problemView = function (data) {
     let problemNumber = parseInt(data, 10);
     let view = $('.templates .problem-view').clone();
@@ -59,7 +63,9 @@ learnjs.problemView = function (data) {
 
 learnjs.showView = function (hash) {
     let routes = {
-        '#problem': learnjs.problemView
+        '#problem': learnjs.problemView,
+        '#': learnjs.landingView,
+        '': learnjs.landingView
     };
     let hashParts = hash.split('-');
     let viewFn = routes[hashParts[0]];
