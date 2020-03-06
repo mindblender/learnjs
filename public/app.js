@@ -36,6 +36,15 @@ learnjs.problemView = function (data) {
     let problemData = learnjs.problems[problemNumber - 1];
     let resultFlash = view.find('.result');
 
+    if (problemNumber < learnjs.problems.length) {
+        let buttonItem = learnjs.template('skip-btn');
+        buttonItem.find('a').attr('href', '#problem-' + (problemNumber + 1));
+        $('.nav-list').append(buttonItem);
+        view.bind('removingView', function () {
+            buttonItem.remove();
+        })
+    }
+
     function checkAnswer() {
         let answer = view.find('.answer').val();
         let test = problemData.code.replace('__', answer) + '; problem();';
@@ -70,6 +79,7 @@ learnjs.showView = function (hash) {
     let hashParts = hash.split('-');
     let viewFn = routes[hashParts[0]];
     if (viewFn) {
+        learnjs.triggerEvent('removingView', []);
         $('.view-container').empty().append(viewFn(hashParts[1]));
     }
 };
@@ -98,3 +108,7 @@ learnjs.buildCorrectFlash = function (problemNum) {
 learnjs.template = function (name) {
     return $('.templates .' + name).clone();
 };
+
+learnjs.triggerEvent = function(name, args) {
+    $('.view-container>*').trigger(name, args);
+}
